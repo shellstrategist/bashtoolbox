@@ -1,0 +1,35 @@
+debit ~ 0.2ko/s
+
+dependences
+agent : dig,openssl
+serveur : bind9, pgrep, openssl
+
+
+[bind9 conf]
+[named.conf]
+
+include "/etc/bind/named.conf.options";
+include "/etc/bind/named.conf.local";
+include "/etc/bind/named.conf.default-zones";
+
+
+logging {
+    channel query_log {
+        file "/var/log/named/query.log";
+        severity debug;
+        print-time yes;
+        print-category yes;
+    };
+    category queries { query_log; };
+};
+
+[named.conf.options]
+
+options {
+        directory "/var/cache/bind";
+        dnssec-validation auto;
+        listen-on { 127.0.0.1;};
+
+};
+
+
