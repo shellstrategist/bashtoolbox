@@ -1,5 +1,4 @@
 #!/bin/bash
-date
 encrypt_and_base64() {
     local input_file="$1"
     local encrypted_file
@@ -49,4 +48,3 @@ do
 done
 
 unset key file ip spoof_domain start_flag end_flag random_packet_size encrypted_file
-date
